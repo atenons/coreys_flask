@@ -1,0 +1,10 @@
+*.py[cod]
+venv
+
+
+
+
+/__pycashe__
+/.vscode
+.env
+/logs
