@@ -61,6 +61,18 @@ body {
     color: #333;
     text-decoration: none;
   }
+
+  .article-metadata-footer {
+    
+    padding-top: 1px;
+    margin-top: 2px;
+    border-top: 1px solid #e3e3e3
+  }
+  
+  .article-metadata-footer a:hover {
+    color: #333;
+    text-decoration: none;
+  }
   
   .article-svg {
     width: 25px;

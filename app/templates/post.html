@@ -22,6 +22,39 @@
         <p class="article-content">{{ post.content }}</p>
     </div>
 </article>
+
+{% if post.comments %}
+<p>
+<h4>Comments:</h4>
+</p>
+{% for comment in post.comments|reverse %}
+
+<article class="media content-section">
+    <img class="rounded-circle article-img"
+        src="{{ url_for('static', filename='profile_pics/' + comment.author.image_file) }}">
+    <div class="media-body">
+        <div class="article-metadata">
+            <small class="text-muted"><a class="mr-2"
+                    href="{{ url_for('users.user_posts', username=comment.author.username) }}">{{
+                    comment.author.username
+                    }}</a></small>
+            <small class="text-muted">{{ comment.date_posted.strftime('%d-%m-%Y %H:%M') }}</small>
+        </div>
+        <p class="article-content">{{ comment.content }}</p>
+    </div>
+    {% if comment.author == current_user %}
+    <div>
+        <p>
+            <a class="btn btn-outline-info btn-sm mt-5 mb-1"
+                href="{{ url_for('posts.delete_comment', post_id=post.id, comment_id=comment.id) }}">Delete</a>
+        </p>
+    </div>
+    {% endif %}
+</article>
+{% endfor %}
+{% endif %}
+
+{% include "create_comment.html" %}
 <!-- Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
     aria-hidden="true">
