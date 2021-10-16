@@ -79,9 +79,7 @@ def delete_post(post_id):
     return redirect(url_for("main.home"))
 
 
-@posts.route(
-    "/post/<int:post_id>/<int:comment_id>/delete_comment", methods=["GET", "POST"]
-)
+@posts.route("/post/<int:post_id>/<int:comment_id>/delete-comment", methods=["POST"])
 @login_required
 def delete_comment(post_id, comment_id):
     post = Post.query.get_or_404(post_id)
